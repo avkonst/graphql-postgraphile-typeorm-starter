@@ -1,0 +1,20 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "pguser",
+    "password": "pgpass",
+    "database": "dbname",
+    "schema": "main",
+    "logging": true,
+    "migrationsRun": true,
+    "entities": [
+        "src/entity/**/*"
+    ],
+    "migrations": [
+        "src/migration/**/*"
+    ],
+    "subscribers": [
+        "src/subscriber/**/*"
+    ]
+}

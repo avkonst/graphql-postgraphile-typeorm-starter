@@ -1,0 +1,934 @@
+"""
+A signed eight-byte integer. The upper big integer values are greater then the
+max value for a JavaScript number. Therefore all big integers will be output as
+strings and not numbers.
+"""
+scalar BigInt
+
+"""All input for the create `Migration` mutation."""
+input CreateMigrationInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `Migration` to be created by this mutation."""
+  migration: MigrationInput!
+}
+
+"""The output of our create `Migration` mutation."""
+type CreateMigrationPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Migration` that was created by this mutation."""
+  migration: Migration
+
+  """An edge for our `Migration`. May be used by Relay 1."""
+  migrationEdge(
+    """The method to use when ordering `Migration`."""
+    orderBy: [MigrationsOrderBy!] = PRIMARY_KEY_ASC
+  ): MigrationsEdge
+}
+
+"""All input for the create `Photo` mutation."""
+input CreatePhotoInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `Photo` to be created by this mutation."""
+  photo: PhotoInput!
+}
+
+"""The output of our create `Photo` mutation."""
+type CreatePhotoPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Photo` that was created by this mutation."""
+  photo: Photo
+
+  """An edge for our `Photo`. May be used by Relay 1."""
+  photoEdge(
+    """The method to use when ordering `Photo`."""
+    orderBy: [PhotosOrderBy!] = PRIMARY_KEY_ASC
+  ): PhotosEdge
+}
+
+"""All input for the create `User` mutation."""
+input CreateUserInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `User` to be created by this mutation."""
+  user: UserInput!
+}
+
+"""The output of our create `User` mutation."""
+type CreateUserPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `User` that was created by this mutation."""
+  user: User
+
+  """An edge for our `User`. May be used by Relay 1."""
+  userEdge(
+    """The method to use when ordering `User`."""
+    orderBy: [UsersOrderBy!] = PRIMARY_KEY_ASC
+  ): UsersEdge
+}
+
+"""A location in a connection that can be used for resuming pagination."""
+scalar Cursor
+
+"""All input for the `deleteMigrationById` mutation."""
+input DeleteMigrationByIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  id: Int!
+}
+
+"""All input for the `deleteMigration` mutation."""
+input DeleteMigrationInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Migration` to be deleted.
+  """
+  nodeId: ID!
+}
+
+"""The output of our delete `Migration` mutation."""
+type DeleteMigrationPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Migration` that was deleted by this mutation."""
+  migration: Migration
+  deletedMigrationId: ID
+
+  """An edge for our `Migration`. May be used by Relay 1."""
+  migrationEdge(
+    """The method to use when ordering `Migration`."""
+    orderBy: [MigrationsOrderBy!] = PRIMARY_KEY_ASC
+  ): MigrationsEdge
+}
+
+"""All input for the `deletePhotoById` mutation."""
+input DeletePhotoByIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  id: Int!
+}
+
+"""All input for the `deletePhoto` mutation."""
+input DeletePhotoInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Photo` to be deleted.
+  """
+  nodeId: ID!
+}
+
+"""The output of our delete `Photo` mutation."""
+type DeletePhotoPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Photo` that was deleted by this mutation."""
+  photo: Photo
+  deletedPhotoId: ID
+
+  """An edge for our `Photo`. May be used by Relay 1."""
+  photoEdge(
+    """The method to use when ordering `Photo`."""
+    orderBy: [PhotosOrderBy!] = PRIMARY_KEY_ASC
+  ): PhotosEdge
+}
+
+"""All input for the `deleteUserById` mutation."""
+input DeleteUserByIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  id: Int!
+}
+
+"""All input for the `deleteUser` mutation."""
+input DeleteUserInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `User` to be deleted.
+  """
+  nodeId: ID!
+}
+
+"""The output of our delete `User` mutation."""
+type DeleteUserPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `User` that was deleted by this mutation."""
+  user: User
+  deletedUserId: ID
+
+  """An edge for our `User`. May be used by Relay 1."""
+  userEdge(
+    """The method to use when ordering `User`."""
+    orderBy: [UsersOrderBy!] = PRIMARY_KEY_ASC
+  ): UsersEdge
+}
+
+type Migration implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+  id: Int!
+  timestamp: BigInt!
+  name: String!
+}
+
+"""
+A condition to be used against `Migration` object types. All fields are tested
+for equality and combined with a logical ‘and.’
+"""
+input MigrationCondition {
+  """Checks for equality with the object’s `id` field."""
+  id: Int
+
+  """Checks for equality with the object’s `timestamp` field."""
+  timestamp: BigInt
+
+  """Checks for equality with the object’s `name` field."""
+  name: String
+}
+
+"""An input for mutations affecting `Migration`"""
+input MigrationInput {
+  id: Int
+  timestamp: BigInt!
+  name: String!
+}
+
+"""
+Represents an update to a `Migration`. Fields that are set will be updated.
+"""
+input MigrationPatch {
+  id: Int
+  timestamp: BigInt
+  name: String
+}
+
+"""A connection to a list of `Migration` values."""
+type MigrationsConnection {
+  """A list of `Migration` objects."""
+  nodes: [Migration]!
+
+  """
+  A list of edges which contains the `Migration` and cursor to aid in pagination.
+  """
+  edges: [MigrationsEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `Migration` you could get from the connection."""
+  totalCount: Int
+}
+
+"""A `Migration` edge in the connection."""
+type MigrationsEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `Migration` at the end of the edge."""
+  node: Migration
+}
+
+"""Methods to use when ordering `Migration`."""
+enum MigrationsOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  TIMESTAMP_ASC
+  TIMESTAMP_DESC
+  NAME_ASC
+  NAME_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+The root mutation type which contains root level fields which mutate data.
+"""
+type Mutation {
+  """Creates a single `Migration`."""
+  createMigration(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreateMigrationInput!
+  ): CreateMigrationPayload
+
+  """Creates a single `Photo`."""
+  createPhoto(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreatePhotoInput!
+  ): CreatePhotoPayload
+
+  """Creates a single `User`."""
+  createUser(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreateUserInput!
+  ): CreateUserPayload
+
+  """
+  Updates a single `Migration` using its globally unique id and a patch.
+  """
+  updateMigration(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateMigrationInput!
+  ): UpdateMigrationPayload
+
+  """Updates a single `Migration` using a unique key and a patch."""
+  updateMigrationById(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateMigrationByIdInput!
+  ): UpdateMigrationPayload
+
+  """Updates a single `Photo` using its globally unique id and a patch."""
+  updatePhoto(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdatePhotoInput!
+  ): UpdatePhotoPayload
+
+  """Updates a single `Photo` using a unique key and a patch."""
+  updatePhotoById(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdatePhotoByIdInput!
+  ): UpdatePhotoPayload
+
+  """Updates a single `User` using its globally unique id and a patch."""
+  updateUser(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateUserInput!
+  ): UpdateUserPayload
+
+  """Updates a single `User` using a unique key and a patch."""
+  updateUserById(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateUserByIdInput!
+  ): UpdateUserPayload
+
+  """Deletes a single `Migration` using its globally unique id."""
+  deleteMigration(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteMigrationInput!
+  ): DeleteMigrationPayload
+
+  """Deletes a single `Migration` using a unique key."""
+  deleteMigrationById(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteMigrationByIdInput!
+  ): DeleteMigrationPayload
+
+  """Deletes a single `Photo` using its globally unique id."""
+  deletePhoto(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeletePhotoInput!
+  ): DeletePhotoPayload
+
+  """Deletes a single `Photo` using a unique key."""
+  deletePhotoById(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeletePhotoByIdInput!
+  ): DeletePhotoPayload
+
+  """Deletes a single `User` using its globally unique id."""
+  deleteUser(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteUserInput!
+  ): DeleteUserPayload
+
+  """Deletes a single `User` using a unique key."""
+  deleteUserById(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteUserByIdInput!
+  ): DeleteUserPayload
+}
+
+"""An object with a globally unique `ID`."""
+interface Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: Cursor
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: Cursor
+}
+
+type Photo implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+  id: Int!
+  name: String!
+  description: String!
+  filename: String!
+  views: Float!
+  isPublished: Boolean!
+}
+
+"""
+A condition to be used against `Photo` object types. All fields are tested for equality and combined with a logical ‘and.’
+"""
+input PhotoCondition {
+  """Checks for equality with the object’s `id` field."""
+  id: Int
+
+  """Checks for equality with the object’s `name` field."""
+  name: String
+
+  """Checks for equality with the object’s `description` field."""
+  description: String
+
+  """Checks for equality with the object’s `filename` field."""
+  filename: String
+
+  """Checks for equality with the object’s `views` field."""
+  views: Float
+
+  """Checks for equality with the object’s `isPublished` field."""
+  isPublished: Boolean
+}
+
+"""An input for mutations affecting `Photo`"""
+input PhotoInput {
+  id: Int
+  name: String!
+  description: String!
+  filename: String!
+  views: Float!
+  isPublished: Boolean!
+}
+
+"""
+Represents an update to a `Photo`. Fields that are set will be updated.
+"""
+input PhotoPatch {
+  id: Int
+  name: String
+  description: String
+  filename: String
+  views: Float
+  isPublished: Boolean
+}
+
+"""A connection to a list of `Photo` values."""
+type PhotosConnection {
+  """A list of `Photo` objects."""
+  nodes: [Photo]!
+
+  """
+  A list of edges which contains the `Photo` and cursor to aid in pagination.
+  """
+  edges: [PhotosEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `Photo` you could get from the connection."""
+  totalCount: Int
+}
+
+"""A `Photo` edge in the connection."""
+type PhotosEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `Photo` at the end of the edge."""
+  node: Photo
+}
+
+"""Methods to use when ordering `Photo`."""
+enum PhotosOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  NAME_ASC
+  NAME_DESC
+  DESCRIPTION_ASC
+  DESCRIPTION_DESC
+  FILENAME_ASC
+  FILENAME_DESC
+  VIEWS_ASC
+  VIEWS_DESC
+  IS_PUBLISHED_ASC
+  IS_PUBLISHED_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""The root query type which gives access points into the data universe."""
+type Query implements Node {
+  """
+  Exposes the root query type nested one level down. This is helpful for Relay 1
+  which can only query top level fields if they are in a particular form.
+  """
+  query: Query!
+
+  """
+  The root query type must be a `Node` to work well with Relay 1 mutations. This just resolves to `query`.
+  """
+  nodeId: ID!
+
+  """Fetches an object given its globally unique `ID`."""
+  node(
+    """The globally unique `ID`."""
+    nodeId: ID!
+  ): Node
+
+  """Reads and enables pagination through a set of `Migration`."""
+  allMigrations(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `Migration`."""
+    orderBy: [MigrationsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: MigrationCondition
+  ): MigrationsConnection
+
+  """Reads and enables pagination through a set of `Photo`."""
+  allPhotos(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `Photo`."""
+    orderBy: [PhotosOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: PhotoCondition
+  ): PhotosConnection
+
+  """Reads and enables pagination through a set of `User`."""
+  allUsers(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `User`."""
+    orderBy: [UsersOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: UserCondition
+  ): UsersConnection
+  migrationById(id: Int!): Migration
+  photoById(id: Int!): Photo
+  userById(id: Int!): User
+
+  """Reads a single `Migration` using its globally unique `ID`."""
+  migration(
+    """
+    The globally unique `ID` to be used in selecting a single `Migration`.
+    """
+    nodeId: ID!
+  ): Migration
+
+  """Reads a single `Photo` using its globally unique `ID`."""
+  photo(
+    """The globally unique `ID` to be used in selecting a single `Photo`."""
+    nodeId: ID!
+  ): Photo
+
+  """Reads a single `User` using its globally unique `ID`."""
+  user(
+    """The globally unique `ID` to be used in selecting a single `User`."""
+    nodeId: ID!
+  ): User
+}
+
+"""All input for the `updateMigrationById` mutation."""
+input UpdateMigrationByIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `Migration` being updated.
+  """
+  migrationPatch: MigrationPatch!
+  id: Int!
+}
+
+"""All input for the `updateMigration` mutation."""
+input UpdateMigrationInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Migration` to be updated.
+  """
+  nodeId: ID!
+
+  """
+  An object where the defined keys will be set on the `Migration` being updated.
+  """
+  migrationPatch: MigrationPatch!
+}
+
+"""The output of our update `Migration` mutation."""
+type UpdateMigrationPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Migration` that was updated by this mutation."""
+  migration: Migration
+
+  """An edge for our `Migration`. May be used by Relay 1."""
+  migrationEdge(
+    """The method to use when ordering `Migration`."""
+    orderBy: [MigrationsOrderBy!] = PRIMARY_KEY_ASC
+  ): MigrationsEdge
+}
+
+"""All input for the `updatePhotoById` mutation."""
+input UpdatePhotoByIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `Photo` being updated.
+  """
+  photoPatch: PhotoPatch!
+  id: Int!
+}
+
+"""All input for the `updatePhoto` mutation."""
+input UpdatePhotoInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Photo` to be updated.
+  """
+  nodeId: ID!
+
+  """
+  An object where the defined keys will be set on the `Photo` being updated.
+  """
+  photoPatch: PhotoPatch!
+}
+
+"""The output of our update `Photo` mutation."""
+type UpdatePhotoPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Photo` that was updated by this mutation."""
+  photo: Photo
+
+  """An edge for our `Photo`. May be used by Relay 1."""
+  photoEdge(
+    """The method to use when ordering `Photo`."""
+    orderBy: [PhotosOrderBy!] = PRIMARY_KEY_ASC
+  ): PhotosEdge
+}
+
+"""All input for the `updateUserById` mutation."""
+input UpdateUserByIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `User` being updated.
+  """
+  userPatch: UserPatch!
+  id: Int!
+}
+
+"""All input for the `updateUser` mutation."""
+input UpdateUserInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `User` to be updated.
+  """
+  nodeId: ID!
+
+  """
+  An object where the defined keys will be set on the `User` being updated.
+  """
+  userPatch: UserPatch!
+}
+
+"""The output of our update `User` mutation."""
+type UpdateUserPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `User` that was updated by this mutation."""
+  user: User
+
+  """An edge for our `User`. May be used by Relay 1."""
+  userEdge(
+    """The method to use when ordering `User`."""
+    orderBy: [UsersOrderBy!] = PRIMARY_KEY_ASC
+  ): UsersEdge
+}
+
+type User implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+  id: Int!
+  name: String!
+  email: String!
+  password: String!
+}
+
+"""
+A condition to be used against `User` object types. All fields are tested for equality and combined with a logical ‘and.’
+"""
+input UserCondition {
+  """Checks for equality with the object’s `id` field."""
+  id: Int
+
+  """Checks for equality with the object’s `name` field."""
+  name: String
+
+  """Checks for equality with the object’s `email` field."""
+  email: String
+
+  """Checks for equality with the object’s `password` field."""
+  password: String
+}
+
+"""An input for mutations affecting `User`"""
+input UserInput {
+  id: Int
+  name: String!
+  email: String!
+  password: String!
+}
+
+"""
+Represents an update to a `User`. Fields that are set will be updated.
+"""
+input UserPatch {
+  id: Int
+  name: String
+  email: String
+  password: String
+}
+
+"""A connection to a list of `User` values."""
+type UsersConnection {
+  """A list of `User` objects."""
+  nodes: [User]!
+
+  """
+  A list of edges which contains the `User` and cursor to aid in pagination.
+  """
+  edges: [UsersEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `User` you could get from the connection."""
+  totalCount: Int
+}
+
+"""A `User` edge in the connection."""
+type UsersEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `User` at the end of the edge."""
+  node: User
+}
+
+"""Methods to use when ordering `User`."""
+enum UsersOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  NAME_ASC
+  NAME_DESC
+  EMAIL_ASC
+  EMAIL_DESC
+  PASSWORD_ASC
+  PASSWORD_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}

@@ -1,0 +1,68 @@
+# import UsersConnection, Photo, CreatePhotoPayload, CreatePhotoInput, DeletePhotoInput, DeletePhotoPayload, PhotosConnection, PhotosOrderBy, Cursor from "./generated/postgraphile.graphql"
+
+type Query {
+    # """Retruns the current user from JWT token, which was previously obtained via `login` mutation"""
+    me: User
+
+    """Reads and enables pagination through a set of `Photo`."""
+    allPhotos(
+        """Only read the first `n` values of the set."""
+        first: Int
+
+        """Only read the last `n` values of the set."""
+        last: Int
+
+        """
+        Skip the first `n` values from our `after` cursor, an alternative to cursor
+        based pagination. May not be used with `last`.
+        """
+        offset: Int
+
+        """Read all values in the set before (above) this cursor."""
+        before: Cursor
+
+        """Read all values in the set after (below) this cursor."""
+        after: Cursor
+
+        """The method to use when ordering `Photo`."""
+        orderBy: [PhotosOrderBy!] = [PRIMARY_KEY_ASC]
+
+        """
+        A condition to be used in determining which values should be returned by the collection.
+        """
+        condition: PhotoCondition
+    ): PhotosConnection
+}
+
+type Mutation {
+    signup(email: String!, password: String!, name: String!): User!
+    login(email: String!, password: String!): AuthPayload!
+
+    """Creates a single `Photo`."""
+    createPhoto(
+        """
+        The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+        """
+        input: CreatePhotoInput!
+    ): CreatePhotoPayload
+
+    """Deletes a single `Photo` using its globally unique id."""
+    deletePhoto(
+        """
+        The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+        """
+        input: DeletePhotoInput!
+    ): DeletePhotoPayload
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
+# do not import generated user, but define it here to hide the encrypted password field
+type User {
+  id: Int!
+  email: String!
+  name: String!
+}

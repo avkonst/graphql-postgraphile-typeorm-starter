@@ -1,0 +1,15 @@
+version: '3'
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: always
+    ports:
+    - "5432:5432"
+    environment:
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: pgpass
+    volumes:
+      - postgres:/var/lib/postgresql/data
+volumes:
+  postgres:
