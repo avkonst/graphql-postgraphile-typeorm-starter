@@ -25,7 +25,8 @@ Alternatives: [Graphql API with typescript via Prisma](https://github.com/graphq
 1. Run `yarn install`
 2. Edit `config.dev.json` database connection settings (uses `Typeorm` connection configuration options)
 3. Launch everything in development `watch` mode: `yarn start` - it will run the initial database setup (the first database schema migrations script) and will start development environment. Check terminal output for served endpoints and ports.
-4. Build everthing into self contained distributable folder: `yarn build`
+4. Play with example queries saved in [examples.graphql](./examples.graphql) file
+5. Build everthing into self contained distributable folder: `yarn build`
 
 ### Schema migration workflow
 
