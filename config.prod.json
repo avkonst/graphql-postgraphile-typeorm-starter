@@ -5,7 +5,7 @@
     "username": "pguser",
     "password": "pgpass",
     "database": "dbname",
-    "schema": "main",
+    "schema": "public",
     "logging": false,
     "migrationsRun": true,
     "entities": [

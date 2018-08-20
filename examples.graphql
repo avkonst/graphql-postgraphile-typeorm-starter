@@ -1,0 +1,61 @@
+# create user
+mutation {
+  signup(email: "ass@b.c", name: "user", password: "pass") {
+    id
+  }
+}
+
+# login and save token
+mutation {
+  login(email: "ass@b.c", password: "pass") {
+    token
+  }
+}
+
+# set token to Authorization header as `Bearer TOKEN_VALUE`, and now you can run auth protected queries:
+
+# create photo
+mutation {
+  createPhoto(input: {
+    photo: {
+      name: "photo name",
+      description: "some descr",
+      views: 1,
+      isPublished: false
+      filename: "filename.tst"
+    }
+  }) {
+    photo {
+      id
+      name
+      nodeId
+      filename
+      description
+      id
+    }
+  }
+}
+
+# list photos
+query {
+  allPhotos {
+    nodes {
+      name,
+      filename,
+      description,
+      nodeId
+    }
+  }
+}
+
+# delete photo
+mutation {
+  deletePhoto(input: {
+    nodeId: "WyJwaG90b3MiLDFd"
+  }) {
+    photo {
+      id
+      name
+    }
+  }
+}
